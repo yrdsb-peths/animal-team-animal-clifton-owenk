@@ -10,8 +10,11 @@ public class Apple extends Actor
 {
     int speed = 1;
     
-    public Apple() {
-        setImage("images/apple1.png");
+    public Apple() 
+    {
+        GreenfootImage image = new GreenfootImage("images/apple1.png");
+        image.scale(50, 50); // Width, Height
+        setImage(image);
     }
     
     public void act()
