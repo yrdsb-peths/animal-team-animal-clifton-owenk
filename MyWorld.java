@@ -65,6 +65,13 @@ public class MyWorld extends World
         int y = 0;
         addObject(apple, x, y);
     }
+    
+    /**
+     * Updates the elephant's speed
+     */
+    public void updateElephantSpeed(Elephant elephant){
+        elephant.setSpeed(level + 1);
+    }
 }
 
 

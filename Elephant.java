@@ -16,6 +16,7 @@ public class Elephant extends Actor
     //Direction the elephant is facing
     String facing = "right";
     SimpleTimer animationTimer = new SimpleTimer();
+    private int speed = 2;
     
     public Elephant(){
         for(int i = 0; i < 8; i++){
@@ -72,6 +73,7 @@ public class Elephant extends Actor
         
         //Animate the elephant
         animateElephant();
+        
     }
     
     /**
@@ -89,5 +91,9 @@ public class Elephant extends Actor
             elephantSound.play();
         }
         
+    }
+    
+    public void setSpeed(int newSpeed){
+        this.speed = newSpeed;
     }
 }
