@@ -21,6 +21,10 @@ public class TitleScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         
+        //Add startButton
+        StartButton startButton = new StartButton();
+        addObject(startButton, getWidth()/2, getHeight()-50);
+        
         for(int i=0; i<bgFrames.length; i++)
         {
             bgFrames[i] = new GreenfootImage("title_bg" + (i + 1) + ".png");
@@ -41,11 +45,6 @@ public class TitleScreen extends World
             bgIndex = (bgIndex +1) % bgFrames.length;
             setBackground(bgFrames[bgIndex]);
             bgTimer.mark();
-        }
-        //Start the game if user presses the space bar
-        if(Greenfoot.isKeyDown("space")){
-            MyWorld gameWorld = new MyWorld();
-            Greenfoot.setWorld(gameWorld);
         }
     }
 }
