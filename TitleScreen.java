@@ -21,6 +21,9 @@ public class TitleScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         
+        TitleImage chineseTitle = new TitleImage();
+        addObject(chineseTitle, getWidth()/2, getHeight()/2-70);
+        
         //Add startButton
         StartButton startButton = new StartButton();
         addObject(startButton, getWidth()/2, getHeight()-50);
