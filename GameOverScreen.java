@@ -3,7 +3,6 @@ import greenfoot.*;
 public class GameOverScreen extends World
 {
     private Actor gameOverImage = new Actor() {}; // Placeholder actor to show PNG
-    private Label instructionLabel = new Label("Press <space> to return", 40);
 
     private boolean showImage = true;
     private SimpleTimer flashTimer = new SimpleTimer();
@@ -22,15 +21,17 @@ public class GameOverScreen extends World
         gameOverImage.setImage(img);
         addObject(gameOverImage, getWidth()/2, getHeight()/2 - 30);
 
-        // Add text label
-        addObject(instructionLabel, getWidth()/2, getHeight()/2 + 80);
+        //Add back to menu button
+        BackToMenuButton backButton = new BackToMenuButton();
+        addObject(backButton, getWidth()/2, getHeight() -80);
 
         flashTimer.mark();
     }
 
     public void act()
     {
-        if (Greenfoot.isKeyDown("space")) {
+        if (Greenfoot.mouseClicked(this)) 
+        {
             Greenfoot.setWorld(new TitleScreen());
         }
 
