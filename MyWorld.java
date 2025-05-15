@@ -12,6 +12,7 @@ public class MyWorld extends World
     Label scoreLabel;
     int level = 1;
     private boolean isGameOver= false;
+    
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -29,7 +30,9 @@ public class MyWorld extends World
         
         createApple();
         
-        setBackground("images/background.png");
+        GreenfootImage bg = new GreenfootImage("savanna_bg.png");
+        bg.scale(getWidth(),getHeight());
+        setBackground(bg);
     }
     
     /**
