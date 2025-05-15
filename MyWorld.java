@@ -11,7 +11,7 @@ public class MyWorld extends World
     public int score = 0;
     Label scoreLabel;
     int level = 1;
-    
+    private boolean isGameOver= false;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -37,8 +37,11 @@ public class MyWorld extends World
      */
     public void gameOver()
     {
-        Label gameOverLabel = new Label("Game Over", 100);
-        addObject(gameOverLabel, 300, 200);
+        if(!isGameOver)
+        {
+            isGameOver=true;
+            Greenfoot.setWorld(new GameOverScreen());
+        }
     }
     
     /**
