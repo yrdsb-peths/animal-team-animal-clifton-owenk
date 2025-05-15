@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
 public class BackToMenuButton extends Actor
 {
@@ -6,7 +6,8 @@ public class BackToMenuButton extends Actor
     private GreenfootImage img2 = new GreenfootImage("back_button2.png");
     private boolean showingFirst = true;
     private SimpleTimer animationTimer = new SimpleTimer();
-    
+    private GreenfootSound clickSound = new GreenfootSound("button_click.mp3");
+
     public BackToMenuButton()
     {
         img1.scale(200, 75);
@@ -14,31 +15,22 @@ public class BackToMenuButton extends Actor
         setImage(img1);
         animationTimer.mark();
     }
-    
+
     public void act()
     {
         animateButton();
-        
-        if(Greenfoot.mouseClicked(this))
-        {
+
+        if (Greenfoot.mouseClicked(this)) {
+            clickSound.play();  //Play sound when click
             Greenfoot.setWorld(new TitleScreen());
         }
     }
-    
+
     private void animateButton()
     {
-        if(animationTimer.millisElapsed()>500)
-        {
-            if(showingFirst)
-            {
-                setImage(img2);
-            }
-            else
-            {
-                setImage(img1);
-            }
-            
-            showingFirst =!showingFirst;
+        if (animationTimer.millisElapsed() > 500) {
+            setImage(showingFirst ? img2 : img1);
+            showingFirst = !showingFirst;
             animationTimer.mark();
         }
     }
