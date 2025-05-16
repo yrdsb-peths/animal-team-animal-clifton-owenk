@@ -11,17 +11,20 @@ public class GameOverScreen extends World
     {
         super(600, 400, 1);
 
-        // Optional background — remove these lines if not using a background image
         GreenfootImage bg = new GreenfootImage("images/gameover.png");
         bg.scale(getWidth(), getHeight());
         setBackground(bg);
 
-        // Set up the image
+        /**
+         * Setup image
+         */
         GreenfootImage img = new GreenfootImage("gameover_title.png");
         gameOverImage.setImage(img);
         addObject(gameOverImage, getWidth()/2, getHeight()/2 - 30);
 
-        //Add back to menu button
+        /**
+         * Add back to menu button
+         */
         BackToMenuButton backButton = new BackToMenuButton();
         addObject(backButton, getWidth()/2, getHeight() -80);
 
@@ -42,11 +45,12 @@ public class GameOverScreen extends World
     {
         if (flashTimer.millisElapsed() > 500)
         {
-            if (showImage)
+            if (showImage){
                 gameOverImage.setImage(new GreenfootImage(1, 1)); // Hide
-            else
+            }else{
                 gameOverImage.setImage(new GreenfootImage("gameover_title.png")); // Show
-
+            }
+            
             showImage = !showImage;
             flashTimer.mark();
         }
