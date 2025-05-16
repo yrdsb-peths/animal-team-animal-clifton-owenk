@@ -12,7 +12,6 @@ public class TitleScreen extends World
     private int bgIndex = 0;
     private SimpleTimer bgTimer = new SimpleTimer();
     private StartButton startButton;
-    private GreenfootSound titleMusic = new GreenfootSound("title_music.mp3");
 
     /**
      * Constructor for objects of class TitleScreen.
@@ -23,7 +22,6 @@ public class TitleScreen extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         
-        titleMusic.playLoop();//loop background music
         
         TitleImage chineseTitle = new TitleImage();
         addObject(chineseTitle, getWidth()/2, getHeight()/2-70);
@@ -52,13 +50,6 @@ public class TitleScreen extends World
             bgIndex = (bgIndex +1) % bgFrames.length;
             setBackground(bgFrames[bgIndex]);
             bgTimer.mark();
-        }
-        
-        //background music     
-        if(Greenfoot.mouseClicked(startButton))
-        {
-            titleMusic.stop();
-            Greenfoot.setWorld(new MyWorld());
         }
     }
 }
