@@ -2,37 +2,30 @@ import greenfoot.*;
 
 public class StartButton extends Actor
 {
-    private GreenfootImage img1 = new GreenfootImage("start_button.png");
-    private GreenfootImage img2 = new GreenfootImage("start_button1.png");
-    private boolean showFirst = true;
-    private SimpleTimer animationTimer = new SimpleTimer();
+    private GreenfootImage normalImage = new GreenfootImage("start_button1.png");
+    private GreenfootImage hoverImage = new GreenfootImage("start_button.png");
     private GreenfootSound clickSound = new GreenfootSound("button_click.mp3");
 
     public StartButton()
     {
-        img1.scale(240, 80);
-        img2.scale(240, 80);
-        setImage(img1);
-        animationTimer.mark();
+        normalImage.scale(240, 80);
+        hoverImage.scale(240, 80);
+        setImage(normalImage);
     }
 
     public void act()
     {
-        animate();
-
-        if (Greenfoot.mouseClicked(this)) {
-            clickSound.play(); // optional sound
-            Greenfoot.setWorld(new MyWorld());
+        // Hover effect
+        if (Greenfoot.mouseMoved(this)) {
+            setImage(hoverImage);
+        } else if (Greenfoot.mouseMoved(null)) {
+            setImage(normalImage);
         }
-    }
 
-    private void animate()
-    {
-        if (animationTimer.millisElapsed() > 400)
-        {
-            setImage(showFirst ? img2 : img1);
-            showFirst = !showFirst;
-            animationTimer.mark();
+        // Click 
+        if (Greenfoot.mouseClicked(this)) {
+            clickSound.play();
+            Greenfoot.setWorld(new MyWorld());
         }
     }
 }
